@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El King's Interior – Business Tools</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'gold': '#D4AF37',
+            'dark': '#0f0f0f',
+            'light': '#f5f5f5',
+          },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'sans-serif'],
+          },
+          animation: {
+            'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(212, 175, 55, 0.4)' },
+              '50%': { boxShadow: '0 0 40px rgba(212, 175, 55, 0.8)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      color: #f5f5f5;
+    }
+    .btn-gold {
+      @apply bg-gold text-dark font-bold py-4 px-10 rounded-full text-lg uppercase tracking-wider transition-all duration-300 transform hover:scale-105 hover:shadow-2xl;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    }
+    .btn-gold:hover {
+      background: #e6c44a;
+    }
+    .logo-container {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+      animation: float 6s ease-in-out infinite;
+    }
+    .section-title {
+      @apply text-5xl md:text-6xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-400;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .card {
+      @apply bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl border border-gold/20 shadow-2xl backdrop-blur-sm;
+      transition: all 0.4s ease;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Hero Section -->
+  <section class="flex-1 flex flex-col items-center justify-center px-6 py-16 text-center">
+    
+    <!-- Logo -->
+    <div class="logo-container mb-8 animate-pulse-glow">
+      <iframe 
+        src="https://www.canva.com/design/DAGwxTnRu_4/lRDyVdipflri6jNyCfg9Xw/view?embed" 
+        allowfullscreen 
+        allow="fullscreen"
+        class="w-full h-full border-0">
+      </iframe>
+    </div>
+
+    <!-- Title -->
+    <h1 class="section-title mb-6">
+      EL KING'S INTERIOR
+    </h1>
+    <p class="text-xl md:text-2xl text-light mb-4 opacity-90">
+      — Modernising Space with Elegance —
+    </p>
+    <p class="text-sm md:text-base text-gray-400 max-w-2xl mb-12">
+      Professional tools to generate receipts, invoices, and quotes with signature, QR verification, and premium branding.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+      
+      <!-- Receipt Button -->
+      <a href="receipt.html" class="card group">
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-4 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition">
+            <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gold mb-2">Generate Receipt</h3>
+          <p class="text-gray-300 text-sm">Instant payment receipts with signature & QR</p>
+        </div>
+      </a>
+
+      <!-- Invoice Button -->
+      <a href="invoice.html" class="card group">
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-4 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition">
+            <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gold mb-2">Generate Invoice</h3>
+          <p class="text-gray-300 text-sm">Professional invoices with tax & terms</p>
+        </div>
+      </a>
+
+      <!-- Quote Button -->
+      <a href="quote.html" class="card group">
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-4 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition">
+            <svg class="w-10 h-10 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gold mb-2">Generate Quote</h3>
+          <p class="text-gray-300 text-sm">Detailed quotes with validity & signature</p>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="mt-16 flex flex-col sm:flex-row gap-6 justify-center">
+      <a href="receipt.html" class="btn-gold animate-pulse-glow">
+        Start with Receipt
+      </a>
+      <a href="invoice.html" class="btn-gold animate-pulse-glow">
+        Create Invoice
+      </a>
+      <a href="quote.html" class="btn-gold animate-pulse-glow">
+        Build Quote
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 text-center text-gray-500 text-sm border-t border-gray-800">
+    <p>© 2025 El King's Interior. All rights reserved.</p>
+    <p class="mt-2">
+      <a href="https://kingsspacedesigns.netlify.app" class="text-gold hover:underline">kingsspacedesigns.netlify.app</a>
+    </p>
+  </footer>
+
+</body>
+</html>
