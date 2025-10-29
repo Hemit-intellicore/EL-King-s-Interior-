@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>El King's Interior – Business Tools</title>
+  <title>El King's Interior – Admin Login</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,44 +11,46 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      background: #000;
       color: #e5e7eb;
-      min-height: 100vh;
       margin: 0;
       padding: 0;
     }
 
-    .hero {
-      background: url('images/logo.jpg') no-repeat center center;
-      background-size: 150px;
-      background-position: top 2rem center;
-      padding-top: 12rem;
-      padding-bottom: 4rem;
+    /* LOGIN SCREEN */
+    .login-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      padding: 1rem;
+    }
+
+    .login-card {
+      background: #111;
+      border: 2px solid #D4AF37;
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 400px;
       text-align: center;
-      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.7);
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .logo-glow {
-      filter: drop-shadow(0 0 20px rgba(212,175,55,0.8));
+    .logo {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 15px rgba(212,175,55,0.6));
       animation: pulse 3s infinite;
     }
 
@@ -58,63 +60,117 @@
     }
 
     .title {
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: 800;
-      letter-spacing: 0.1em;
       color: #D4AF37;
-      text-shadow: 0 4px 12px rgba(0,0,0,0.8);
       margin-bottom: 0.5rem;
+      letter-spacing: 0.08em;
     }
 
     .subtitle {
-      font-size: 1.1rem;
-      color: #cccccc;
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-    }
-
-    .contact-info {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: #aaa;
-      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
-    .tools-grid {
+    .input-field {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1rem;
+      background: #222;
+      border: 1px solid #444;
+      border-radius: 0.75rem;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: #D4AF37;
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.3);
+    }
+
+    .btn-gold {
+      width: 100%;
+      background: linear-gradient(to right, #D4AF37, #FFD700);
+      color: #000;
+      font-weight: 700;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 9999px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 6px 15px rgba(212,175,55,0.4);
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(to right, #FFD700, #FFED4E);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255,215,0,0.5);
+    }
+
+    .error {
+      color: #ff6b6b;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    /* DASHBOARD */
+    .dashboard {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      padding: 2rem 1rem;
+      display: none;
+    }
+
+    .dashboard-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .dashboard-logo {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 20px rgba(212,175,55,0.6));
+    }
+
+    .dashboard-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #D4AF37;
+      margin-bottom: 0.5rem;
+    }
+
+    .dashboard-subtitle {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    .tools-container {
+      max-width: 1100px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 4rem auto;
-      padding: 0 1rem;
+      gap: 1.5rem;
     }
 
     .tool-card {
-      background: #1a1a1a;
+      background: #111;
       border: 2px solid #D4AF37;
       border-radius: 1.5rem;
       padding: 2rem;
       text-align: center;
       transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .tool-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, rgba(212,175,55,0.1), transparent);
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-
-    .tool-card:hover::before {
-      opacity: 1;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
 
     .tool-card:hover {
-      transform: translateY(-12px);
+      transform: translateY(-10px);
       box-shadow: 0 20px 40px rgba(212,175,55,0.3);
       border-color: #FFD700;
     }
@@ -129,15 +185,13 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      margin: 0 auto 1.5rem;
+      margin: 0 auto 1.25rem;
       box-shadow: 0 8px 20px rgba(212,175,55,0.4);
-      transition: all 0.3s;
     }
 
     .tool-card:hover .tool-icon {
       background: #FFD700;
       transform: scale(1.1);
-      box-shadow: 0 12px 30px rgba(255,215,0,0.5);
     }
 
     .tool-title {
@@ -148,111 +202,182 @@
     }
 
     .tool-desc {
-      font-size: 0.95rem;
-      color: #bbbbbb;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      color: #bbb;
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
     }
 
-    .btn-gold {
+    .btn-tool {
       background: linear-gradient(to right, #D4AF37, #FFD700);
       color: #000;
       font-weight: 700;
-      padding: 0.75rem 2rem;
+      padding: 0.75rem 1.5rem;
       border-radius: 9999px;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      transition: all 0.3s;
-      box-shadow: 0 6px 15px rgba(212,175,55,0.4);
       text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(212,175,55,0.4);
     }
 
-    .btn-gold:hover {
+    .btn-tool:hover {
       background: linear-gradient(to right, #FFD700, #FFED4E);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(255,215,0,0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255,215,0,0.5);
+    }
+
+    .logout-btn {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(0,0,0,0.7);
+      color: #aaa;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      z-index: 100;
+    }
+
+    .logout-btn:hover {
+      color: #D4AF37;
+      background: rgba(212,175,55,0.2);
     }
 
     .footer {
       text-align: center;
-      padding: 2rem;
-      background: #000;
+      padding: 2rem 1rem;
       color: #666;
-      font-size: 0.85rem;
-      margin-top: 4rem;
+      font-size: 0.8rem;
+      margin-top: 3rem;
     }
 
-    @media (max-width: 768px) {
-      .title { font-size: 2.2rem; }
-      .hero { padding-top: 10rem; }
-      .logo-glow { width: 100px !important; height: 100px !important; }
+    @media (max-width: 640px) {
+      .dashboard-title { font-size: 2rem; }
+      .tool-card { padding: 1.5rem; }
+      .logout-btn { top: 1rem; right: 1rem; font-size: 0.8rem; padding: 0.4rem 0.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <img src="images/logo.jpg" alt="El King's Interior" class="w-32 h-32 mx-auto mb-6 logo-glow rounded-full object-contain" width="128" height="128">
-      <h1 class="title">EL KING'S INTERIOR</h1>
-      <p class="subtitle">— MODERNISING SPACE —</p>
-      <p class="contact-info">
-        No. 123, FHA, Lugbe, Abuja | +234-810 148 6536 | info@elkingsinterior.com
-      </p>
-    </div>
-  </section>
+  <!-- LOGIN SCREEN -->
+  <div id="loginScreen" class="login-container">
+    <div class="login-card">
+      <img src="images/logo.jpg" alt="Logo" class="logo">
+      <h1 class="title">EL KING'S</h1>
+      <p class="subtitle">Admin Access Required</p>
 
-  <!-- TOOLS GRID -->
-  <section class="tools-grid">
-    <!-- Receipt -->
-    <div class="tool-card">
-      <div class="tool-icon">
-        <i class="fas fa-receipt"></i>
+      <input type="email" id="email" placeholder="Email" class="input-field" required>
+      <input type="password" id="password" placeholder="Password" class="input-field" required>
+
+      <button id="loginBtn" class="btn-gold">Login</button>
+      <p id="errorMsg" class="error">Invalid email or password</p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="dashboard">
+    <div class="logout-btn" onclick="logout()">Logout</div>
+
+    <div class="dashboard-header">
+      <img src="images/logo.jpg" alt="Logo" class="dashboard-logo">
+      <h1 class="dashboard-title">EL KING'S INTERIOR</h1>
+      <p class="dashboard-subtitle">— MODERNISING SPACE —</p>
+    </div>
+
+    <div class="tools-container">
+      <!-- Receipt -->
+      <div class="tool-card">
+        <div class="tool-icon">
+          <i class="fas fa-receipt"></i>
+        </div>
+        <h3 class="tool-title">Receipt Generator</h3>
+        <p class="tool-desc">Create professional receipts with tax, discount, QR code, and signature.</p>
+        <a href="receipt.html" class="btn-tool">
+          <i class="fas fa-arrow-right"></i> Open
+        </a>
       </div>
-      <h3 class="tool-title">Receipt Generator</h3>
-      <p class="tool-desc">
-        Create professional payment receipts with tax, discount, QR code, and digital signature.
-      </p>
-      <a href="receipt.html" class="btn-gold">
-        <i class="fas fa-arrow-right"></i> Generate Receipt
-      </a>
-    </div>
 
-    <!-- Invoice -->
-    <div class="tool-card">
-      <div class="tool-icon">
-        <i class="fas fa-file-invoice-dollar"></i>
+      <!-- Invoice -->
+      <div class="tool-card">
+        <div class="tool-icon">
+          <i class="fas fa-file-invoice-dollar"></i>
+        </div>
+        <h3 class="tool-title">Invoice Generator</h3>
+        <p class="tool-desc">Generate branded invoices with due dates and payment terms.</p>
+        <a href="invoice.html" class="btn-tool">
+          <i class="fas fa-arrow-right"></i> Open
+        </a>
       </div>
-      <h3 class="tool-title">Invoice Generator</h3>
-      <p class="tool-desc">
-        Generate branded invoices with due dates, payment terms, and client details.
-      </p>
-      <a href="invoice.html" class="btn-gold">
-        <i class="fas fa-arrow-right"></i> Generate Invoice
-      </a>
-    </div>
 
-    <!-- Quote -->
-    <div class="tool-card">
-      <div class="tool-icon">
-        <i class="fas fa-file-contract"></i>
+      <!-- Quote -->
+      <div class="tool-card">
+        <div class="tool-icon">
+          <i class="fas fa-file-contract"></i>
+        </div>
+        <h3 class="tool-title">Quote Generator</h3>
+        <p class="tool-desc">Send project estimates with validity and terms & conditions.</p>
+        <a href="quote.html" class="btn-tool">
+          <i class="fas fa-arrow-right"></i> Open
+        </a>
       </div>
-      <h3 class="tool-title">Quote Generator</h3>
-      <p class="tool-desc">
-        Send accurate project estimates with validity period and terms & conditions.
-      </p>
-      <a href="quote.html" class="btn-gold">
-        <i class="fas fa-arrow-right"></i> Generate Quote
-      </a>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>&copy; 2025 El King's Interior. All rights reserved. | <a href="https://hemit-intellisoft.vercel.app" class="text-yellow-400 hover:underline">Powered By Hemit Intellisoft </a></p>
-  </footer>
+    <footer class="footer">
+      <p>© 2025 El King's Interior. All rights reserved. | 
+        <a href="https://hemit-intellisoft.vercel.app" class="text-yellow-400 hover:underline">Powered By Hemit Intellisoft </a>
+      </p>
+    </footer>
+  </div>
 
+  <script>
+    // === CHANGE YOUR PASSWORD HERE ===
+    const ADMIN_EMAIL = "philip@elkingsinterior.com";
+    const ADMIN_PASSWORD = "elkings2025";
+
+    const loginScreen = document.getElementById('loginScreen');
+    const dashboard = document.getElementById('dashboard');
+    const loginBtn = document.getElementById('loginBtn');
+    const errorMsg = document.getElementById('errorMsg');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+
+    loginBtn.onclick = () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+
+      if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+        loginScreen.style.display = 'none';
+        dashboard.style.display = 'block';
+      } else {
+        errorMsg.style.display = 'block';
+        setTimeout(() => errorMsg.style.display = 'none', 3000);
+      }
+    };
+
+    // Enter key login
+    [emailInput, passwordInput].forEach(input => {
+      input.addEventListener('keypress', e => {
+        if (e.key === 'Enter') loginBtn.click();
+      });
+    });
+
+    // Logout
+    window.logout = () => {
+      dashboard.style.display = 'none';
+      loginScreen.style.display = 'flex';
+      emailInput.value = '';
+      passwordInput.value = '';
+      emailInput.focus();
+    };
+
+    // Focus on load
+    window.onload = () => emailInput.focus();
+  </script>
 </body>
 </html>
