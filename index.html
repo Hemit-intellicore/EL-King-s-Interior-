@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>El King's Interior – Business Tools</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      color: #e5e7eb;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero {
+      background: url('images/logo.jpg') no-repeat center center;
+      background-size: 150px;
+      background-position: top 2rem center;
+      padding-top: 12rem;
+      padding-bottom: 4rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-glow {
+      filter: drop-shadow(0 0 20px rgba(212,175,55,0.8));
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .title {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: #D4AF37;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.8);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #cccccc;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 1.5rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .tool-card {
+      background: #1a1a1a;
+      border: 2px solid #D4AF37;
+      border-radius: 1.5rem;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(212,175,55,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .tool-card:hover::before {
+      opacity: 1;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 40px rgba(212,175,55,0.3);
+      border-color: #FFD700;
+    }
+
+    .tool-icon {
+      width: 80px;
+      height: 80px;
+      background: #D4AF37;
+      color: #000;
+      font-size: 2.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 8px 20px rgba(212,175,55,0.4);
+      transition: all 0.3s;
+    }
+
+    .tool-card:hover .tool-icon {
+      background: #FFD700;
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(255,215,0,0.5);
+    }
+
+    .tool-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #D4AF37;
+      margin-bottom: 0.75rem;
+    }
+
+    .tool-desc {
+      font-size: 0.95rem;
+      color: #bbbbbb;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .btn-gold {
+      background: linear-gradient(to right, #D4AF37, #FFD700);
+      color: #000;
+      font-weight: 700;
+      padding: 0.75rem 2rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s;
+      box-shadow: 0 6px 15px rgba(212,175,55,0.4);
+      text-decoration: none;
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(to right, #FFD700, #FFED4E);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255,215,0,0.5);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      background: #000;
+      color: #666;
+      font-size: 0.85rem;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .title { font-size: 2.2rem; }
+      .hero { padding-top: 10rem; }
+      .logo-glow { width: 100px !important; height: 100px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="images/logo.jpg" alt="El King's Interior" class="w-32 h-32 mx-auto mb-6 logo-glow rounded-full object-contain" width="128" height="128">
+      <h1 class="title">EL KING'S INTERIOR</h1>
+      <p class="subtitle">— MODERNISING SPACE —</p>
+      <p class="contact-info">
+        No. 123, FHA, Lugbe, Abuja | +234-810 148 6536 | info@elkingsinterior.com
+      </p>
+    </div>
+  </section>
+
+  <!-- TOOLS GRID -->
+  <section class="tools-grid">
+    <!-- Receipt -->
+    <div class="tool-card">
+      <div class="tool-icon">
+        <i class="fas fa-receipt"></i>
+      </div>
+      <h3 class="tool-title">Receipt Generator</h3>
+      <p class="tool-desc">
+        Create professional payment receipts with tax, discount, QR code, and digital signature.
+      </p>
+      <a href="receipt.html" class="btn-gold">
+        <i class="fas fa-arrow-right"></i> Open Receipt
+      </a>
+    </div>
+
+    <!-- Invoice -->
+    <div class="tool-card">
+      <div class="tool-icon">
+        <i class="fas fa-file-invoice-dollar"></i>
+      </div>
+      <h3 class="tool-title">Invoice Generator</h3>
+      <p class="tool-desc">
+        Generate branded invoices with due dates, payment terms, and client details.
+      </p>
+      <a href="invoice.html" class="btn-gold">
+        <i class="fas fa-arrow-right"></i> Open Invoice
+      </a>
+    </div>
+
+    <!-- Quote -->
+    <div class="tool-card">
+      <div class="tool-icon">
+        <i class="fas fa-file-contract"></i>
+      </div>
+      <h3 class="tool-title">Quote Generator</h3>
+      <p class="tool-desc">
+        Send accurate project estimates with validity period and terms & conditions.
+      </p>
+      <a href="quote.html" class="btn-gold">
+        <i class="fas fa-arrow-right"></i> Open Quote
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>&copy; 2025 El King's Interior. All rights reserved. | <a href="https://kingsspacedesigns.netlify.app" class="text-yellow-400 hover:underline">kingsspacedesigns.netlify.app</a></p>
+  </footer>
+
+</body>
+</html>
